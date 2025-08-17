@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNMUTE - Creative Marketing & Experiential Agency</title>
+    <meta name="description" content="UNMUTE is a creative marketing and experiential agency specializing in lifestyle, hospitality, and culture-driven brands.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-black: #000000;
+            --off-white: #fafafa;
+            --warm-gray: #f5f5f5;
+            --accent-gold: #d4af37;
+            --text-gray: #333333;
+            --light-gray: #666666;
+            --border-light: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-black);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-black) 0%, #333333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="10" cy="60" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="90" cy="30" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 120px);
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            line-height: 0.9;
+        }
+
+        .hero-tagline {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--accent-gold);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Principles Section */
+        .principles {
+            padding: 120px 0;
+            background: var(--off-white);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--primary-black);
+            letter-spacing: -1px;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 60px;
+        }
+
+        .principle-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .principle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        }
+
+        .principle-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-black);
+            line-height: 1.2;
+        }
+
+        .principle-description {
+            color: var(--light-gray);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .founder-info {
+            background: var(--warm-gray);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .founder-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary-black);
+        }
+
+        .founder-name {
+            font-size: 20px;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .founder-description {
+            color: var(--light-gray);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .impact-highlights {
+            text-align: left;
+        }
+
+        .impact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--primary-black);
+        }
+
+        .highlight-item {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .highlight-item::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .highlight-number {
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background: var(--primary-black);
+            color: white;
+        }
+
+        .services .section-title {
+            color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .service-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 120px 0;
+            background: var(--warm-gray);
+            text-align: center;
+        }
+
+        .clients-note {
+            font-size: 18px;
+            color: var(--light-gray);
+            margin-top: 40px;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 0;
+            background: var(--primary-black);
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .contact-subtitle {
+            font-size: 20px;
+            margin-bottom: 60px;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 18px;
+            color: white;
+        }
+
+        .contact-value a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-black);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .principles-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .principle-card {
+                padding: 30px 20px;
+            }
+
+            .founder-info {
+                padding: 40px 30px;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo">UNMUTE</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>UNMUTE</h1>
+            <div class="hero-tagline">Transform Moments Into Meaning</div>
+            <p class="hero-subtitle">A creative marketing and experiential agency specializing in lifestyle, hospitality, and culture-driven brands.</p>
+            <a href="#contact" class="cta-button">Work With Us</a>
+        </div>
+    </section>
+
+    <!-- Principles Section -->
+    <section class="principles">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Approach</h2>
+            <div class="principles-grid">
+                <div class="principle-card fade-in">
+                    <h3 class="principle-title">Immersive Over Ordinary</h3>
+                    <p class="principle-description">We design experiences that go beyond function — every touchpoint is a chance to impress, connect, and convert.</p>
+                </div>
+                <div class="principle-card fade-in">
+                    <h3 class="principle-title">Emotion-Led Storytelling</h3>
+                    <p class="principle-description">We shape how your space makes people feel, then turn that feeling into content, buzz, and bookings.</p>
+                </div>
+                <div class="principle-card fade-in">
+                    <h3 class="principle-title">Aesthetic With Purpose</h3>
+                    <p class="principle-description">From visuals to voice, our creative is refined, modern, and aligned with your brand goals.</p>
+                </div>
+                <div class="principle-card fade-in">
+                    <h3 class="principle-title">Guest-Centered Approach</h3>
+                    <p class="principle-description">We design for the guest — curating activations, digital content, and social strategies that attract and retain your ideal audience.</p>
+                </div>
+                <div class="principle-card fade-in">
+                    <h3 class="principle-title">Launch & Sustain</h3>
+                    <p class="principle-description">We don't just create a moment — we build momentum. From pre-launch teasers to long-term engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="founder-info fade-in">
+                    <h3 class="founder-title">Founder & Creative Director</h3>
+                    <div class="founder-name">Sellah Treza</div>
+                    <p class="founder-description">
+                        A multidisciplinary creative strategist with a refined eye for storytelling, experiential design, and digital influence. With over five years of experience in hospitality and lifestyle marketing, Sellah has played a key role in reshaping guest experiences and repositioning top-tier properties across Kenya.
+                    </p>
+                    <p class="founder-description">
+                        Her work blends creative direction with commercial insight, delivering campaigns that both inspire and convert.
+                    </p>
+                </div>
+                <div class="impact-highlights fade-in">
+                    <h3 class="impact-title">Impact Highlights</h3>
+                    <div class="highlight-item">
+                        <span class="highlight-number">21 Million+</span> impressions for Styles Collab - An 8-week creative campaign that invited local influencers to co-create with the brand.
+                    </div>
+                    <div class="highlight-item">
+                        Generated <span class="highlight-number">500+</span> room bookings in under five months through curated weekend staycation offers.
+                    </div>
+                    <div class="highlight-item">
+                        Increased event guest engagement by <span class="highlight-number">40%</span> through lifestyle-led rooftop series.
+                    </div>
+                    <div class="highlight-item">
+                        Achieved <span class="highlight-number">3–5x</span> Instagram reach growth during influencer campaigns.
+                    </div>
+                    <div class="highlight-item">
+                        Rebranded and launched multiple venues including Kilele Nyama Restaurant, The Roof, Very ibis Panini & Co-Working Spaces (<span class="highlight-number">+29.9%</span> YoY revenue).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Brand Identity Development</h3>
+                    <p class="service-description">Craft compelling brand stories, define tone and aesthetic, and develop comprehensive Brand Books & Guidelines to ensure consistency.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Digital Marketing</h3>
+                    <p class="service-description">Targeted digital ads and campaigns to drive traffic, leads, and conversions with optimized ROI.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Social Media Management</h3>
+                    <p class="service-description">Engaging content, community management, and influencer collaborations to grow your brand organically.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Website Development</h3>
+                    <p class="service-description">Build user-friendly, conversion-focused websites that guide the guest journey seamlessly.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Photography & Videography</h3>
+                    <p class="service-description">Produce high-quality visuals and video content that tell your brand story with impact.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Experiential Events</h3>
+                    <p class="service-description">Produce branded activations, pop-ups, and bespoke lifestyle programming that leave memorable impressions.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">PR & Media Relations</h3>
+                    <p class="service-description">Manage strategic media outreach, secure high-impact placements, and curate guest lists for exclusive events.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Market Feasibility Study</h3>
+                    <p class="service-description">We help brands and properties assess the potential of new concepts or locations by combining cultural insight with data to guide smart, strategic decisions — rooted in real community understanding.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Launch Campaigns</h3>
+                    <p class="service-description">Design and execute influencer events, digital buzz, and strategic press rollouts that captivate your target audience.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Menu & Experience Curation</h3>
+                    <p class="service-description">Create naming, styling, and curated guest experiences aligned with your brand identity.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Influencer Activations</h3>
+                    <p class="service-description">Coordinate hosted stays, collaborations, and authentic user-generated content to extend reach and trust.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <h3 class="service-title">Graphic Design</h3>
+                    <p class="service-description">Create visual assets that communicate your brand's personality across all touchpoints.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Clients</h2>
+            <p class="clients-note fade-in">We've had the privilege of working with leading lifestyle and hospitality brands across Kenya, helping them transform their guest experiences and achieve measurable growth.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Work With Us</h2>
+            <p class="contact-subtitle fade-in">Elevate your brand's voice with UNMUTE — where visionary creativity meets strategic precision. We design bespoke marketing solutions, thoughtfully tailored to align with your ambitions and flexible to accommodate your budget.</p>
+            <div class="contact-info fade-in">
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value"><a href="mailto:Unmutebythevibecircle@gmail.com">Unmutebythevibecircle@gmail.com</a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value"><a href="tel:+254705220875">+254 705 220 875</a></div>
+                </div>
+            </div>
+            <a href="mailto:Unmutebythevibecircle@gmail.com" class="cta-button fade-in">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 UNMUTE. All rights reserved. Transform moments into meaning.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
